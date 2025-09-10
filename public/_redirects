@@ -1,0 +1,9 @@
+# Netlify redirects for Next.js static export
+# Handle client-side routing for SPA
+/*    /index.html   200
+
+# Handle API routes (if any)
+/api/*  /api/:splat  200
+
+# Handle static assets
+/_next/static/*  /_next/static/:splat  200
