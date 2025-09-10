@@ -15,6 +15,13 @@ interface ProductPageProps {
   };
 }
 
+export async function generateStaticParams() {
+  const products = await db.getProducts();
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
+
 async function getProduct(id: string) {
   const product = await db.getProductById(id);
   
@@ -29,14 +36,6 @@ async function getProduct(id: string) {
     product,
     relatedProducts: relatedProducts.filter(p => p.id !== id).slice(0, 4),
   };
-}
-
-export async function generateStaticParams() {
-  // For static export, we need to provide all possible product IDs
-  const products = await db.getProducts();
-  return products.map((product) => ({
-    id: product.id,
-  }));
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
