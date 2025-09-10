@@ -156,24 +156,34 @@ const orders: Order[] = [];
 // Database service
 export const db = {
   // Product methods
-  getProducts: () => Promise.resolve(products),
+  getProducts: async () => {
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 0));
+    return products;
+  },
   
-  getProductById: (id: string) => 
-    Promise.resolve(products.find(product => product.id === id) || null),
+  getProductById: async (id: string) => {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    return products.find(product => product.id === id) || null;
+  },
   
-  getProductsByCategory: (category: string) => 
-    Promise.resolve(products.filter(product => product.category === category)),
+  getProductsByCategory: async (category: string) => {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    return products.filter(product => product.category === category);
+  },
   
-  getCustomizableProducts: () => 
-    Promise.resolve(products.filter(product => product.isCustomizable)),
+  getCustomizableProducts: async () => {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    return products.filter(product => product.isCustomizable);
+  },
   
-  searchProducts: (query: string) => 
-    Promise.resolve(
-      products.filter(product => 
-        product.name.toLowerCase().includes(query.toLowerCase()) || 
-        product.description.toLowerCase().includes(query.toLowerCase())
-      )
-    ),
+  searchProducts: async (query: string) => {
+    await new Promise(resolve => setTimeout(resolve, 0));
+    return products.filter(product => 
+      product.name.toLowerCase().includes(query.toLowerCase()) || 
+      product.description.toLowerCase().includes(query.toLowerCase())
+    );
+  },
   
   // Order methods
   createOrder: (order: Omit<Order, 'id' | 'createdAt'>) => {

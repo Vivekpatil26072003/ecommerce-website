@@ -18,6 +18,14 @@ async function getProduct(id: string) {
   return product;
 }
 
+export async function generateStaticParams() {
+  // For static export, we need to provide all possible customizable product IDs
+  const products = await db.getCustomizableProducts();
+  return products.map((product) => ({
+    id: product.id,
+  }));
+}
+
 export default async function CustomizeProductPage({ params }: CustomizeProductPageProps) {
   const product = await getProduct(params.id);
   

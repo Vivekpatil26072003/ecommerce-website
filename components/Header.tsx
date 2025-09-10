@@ -124,7 +124,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-background pt-16 md:hidden bg-black">
+        <div className="fixed inset-0 z-50 bg-background pt-16 md:hidden">
           <div className="container relative">
             <Button
               variant="ghost"
@@ -132,9 +132,9 @@ const Header = () => {
               className="absolute top-4 right-4"
               onClick={toggleMenu}
             >
-              <X className="h-6 w-6 text-white" />
+              <X className="h-6 w-6" />
             </Button>
-            <nav className="grid gap-6 p-6 bg-black">
+            <nav className="grid gap-6 p-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

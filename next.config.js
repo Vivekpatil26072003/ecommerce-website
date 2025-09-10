@@ -1,10 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export', // Enable static export for Netlify
+  trailingSlash: true, // Add trailing slashes for better compatibility
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  images: { 
+    unoptimized: true,
+    domains: ['images.unsplash.com'],
+  },
+  experimental: {
+    optimizeCss: true,
+  },
 };
 
 module.exports = nextConfig;
